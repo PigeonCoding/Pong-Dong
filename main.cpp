@@ -172,7 +172,7 @@ int main(void)
   SetExitKey(KEY_NULL);
 
   // Main game loop
-  while (!exitWindow)    // Detect window close button or ESC key
+  while (!exitWindow) 
   {
     // Update
     if (WindowShouldClose() || IsKeyPressed(KEY_ESCAPE)) exitWindowRequested = true;
