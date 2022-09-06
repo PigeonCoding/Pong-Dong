@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(raylib_cpp_test)
+project(Pong-Dong)
 
 # raylib
 find_package(raylib QUIET)
