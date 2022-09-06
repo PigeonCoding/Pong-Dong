@@ -1,18 +1,14 @@
 #include <raylib.h>
 
-//------------------------------------------------------------------------------------
-// Program main entry point
-//------------------------------------------------------------------------------------
-
 const float SPEED = 5.0;
 const float BALLSPEED = 4.0;
 const float BALLRADIUS = 15.0;
 
-const float playerWidth = 40.0;
-const float playerHeight = 100.0;
+const float PLAYERWIDTH = 40.0;
+const float PLAYERHEIGHT = 100.0;
 
-const int screenWidth = 1000;
-const int screenHeight = 500;
+const int SCREENWIDTH = 1000;
+const int SCREENHEIGHT = 500;
 
 int score = 0;
 
@@ -35,14 +31,14 @@ Vector2 BallVec;
 
 void UpdateEdges(){
   player1edges[0] = Player.x;
-  player1edges[1] = Player.x + playerWidth; 
+  player1edges[1] = Player.x + PLAYERWIDTH; 
   player1edges[2] = Player.y; 
-  player1edges[3] = Player.y + playerHeight; 
+  player1edges[3] = Player.y + PLAYERHEIGHT; 
 
   player2edges[0] = Player2.x;
-  player2edges[1] = Player2.x + playerWidth; 
+  player2edges[1] = Player2.x + PLAYERWIDTH; 
   player2edges[2] = Player2.y; 
-  player2edges[3] = Player2.y + playerHeight; 
+  player2edges[3] = Player2.y + PLAYERHEIGHT; 
 }
 
 void CollisionPlayerWindow(){
@@ -52,7 +48,7 @@ void CollisionPlayerWindow(){
   }else{
     player1 = true;
   }
-  if (player1edges[3] > screenHeight){
+  if (player1edges[3] > SCREENHEIGHT){
     player1 = false;
     Player.y -= SPEED;
   }else{
@@ -65,7 +61,7 @@ void CollisionPlayerWindow(){
   }else{
     player2 = true;
   }
-  if (player2edges[3] > screenHeight){
+  if (player2edges[3] > SCREENHEIGHT){
     player2 = false;
     Player2.y -= SPEED;
   }else{
@@ -74,12 +70,12 @@ void CollisionPlayerWindow(){
 }
 
 void BallCollision(){
-  if (Ball.x - BALLRADIUS < 1 || Ball.x + BALLRADIUS > screenWidth){
+  if (Ball.x - BALLRADIUS < 1 || Ball.x + BALLRADIUS > SCREENWIDTH){
     dead = true;
     // BallVec.y = -BallVec.y;
 
   }
-  if (Ball.y - BALLRADIUS< 1 || Ball.y + BALLRADIUS > screenHeight){
+  if (Ball.y - BALLRADIUS< 1 || Ball.y + BALLRADIUS > SCREENHEIGHT){
     BallVec.y = -BallVec.y;
   }
 
@@ -129,22 +125,22 @@ void Draw(){
     ClearBackground(BLACK);
 
     DrawCircle(Ball.x, Ball.y , BALLRADIUS, WHITE);
-    DrawRectangle(Player.x, Player.y, playerWidth, playerHeight , WHITE);
-    DrawRectangle(Player2.x, Player2.y, playerWidth, playerHeight , WHITE);
+    DrawRectangle(Player.x, Player.y, PLAYERWIDTH, PLAYERHEIGHT , WHITE);
+    DrawRectangle(Player2.x, Player2.y, PLAYERWIDTH, PLAYERHEIGHT , WHITE);
 
-    DrawText(TextFormat("Score: %08i", score), screenWidth/2 , 40, 20, WHITE);
-    if (dead){DrawText("u lost", screenWidth/2, screenHeight/2, 40, WHITE);}
+    DrawText(TextFormat("Score: %08i", score), SCREENWIDTH/2 , 40, 20, WHITE);
+    if (dead){DrawText("u lost", SCREENWIDTH/2, SCREENHEIGHT/2, 40, WHITE);}
   EndDrawing();
 }
 
 void init(){
-  InitWindow(screenWidth, screenHeight, "shitty pong");
+  InitWindow(SCREENWIDTH, SCREENHEIGHT, "shitty pong");
   SetTargetFPS(60);       
   
-  Player2 = { 6.0 , (float)screenHeight/2 };
-  Player = { (float)screenWidth - playerWidth - 6.0, (float)screenHeight/2 };
+  Player2 = { 6.0 , (float)SCREENHEIGHT/2 };
+  Player = { (float)SCREENWIDTH - PLAYERWIDTH - 6.0, (float)SCREENHEIGHT/2 };
 
-  Ball = { (float)screenWidth/2, (float)screenHeight/2 };
+  Ball = { (float)SCREENWIDTH/2, (float)SCREENHEIGHT/2 };
 
   float BallX = GetRandomValue(-1, 1);  
   float BallY = GetRandomValue(-1, 1);  
