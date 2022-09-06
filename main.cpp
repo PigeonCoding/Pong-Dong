@@ -1,4 +1,8 @@
 #include <raylib.h>
+#include <iostream>
+#include "hell.cpp"
+
+
 
 const float SPEED = 5.0;
 const float BALLSPEED = 4.0;
@@ -101,6 +105,7 @@ void BallCollision(){
 
 void updateBallPos(){
   if(!dead){
+
     Ball.x += BallVec.x * BALLSPEED;
     Ball.y += BallVec.y * BALLSPEED;
     BallCollision();
@@ -135,7 +140,7 @@ void Draw(){
 
 void init(){
   InitWindow(SCREENWIDTH, SCREENHEIGHT, "shitty pong");
-  SetTargetFPS(60);       
+  SetTargetFPS(60); 
   
   Player2 = { 6.0 , (float)SCREENHEIGHT/2 };
   Player = { (float)SCREENWIDTH - PLAYERWIDTH - 6.0, (float)SCREENHEIGHT/2 };
@@ -145,7 +150,12 @@ void init(){
   float BallX = GetRandomValue(-1, 1);  
   float BallY = GetRandomValue(-1, 1);  
 
-  BallVec = { BallX , BallY };    
+  if (BallX == 0) { BallX = 1; }
+  if (BallY == 0) { BallY = -1; }
+
+  BallVec = { BallX , BallY };  
+
+  hell();
 
 }
 

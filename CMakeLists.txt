@@ -34,7 +34,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC raylib raylib_cpp)
 # Web Configurations
 # if (${PLATFORM} STREQUAL "Web")
     # Tell Emscripten to build an example.html file.
-    # set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
+    #set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
 # endif()
 
 # That's it! You should have an example executable that you can run. Have fun!
