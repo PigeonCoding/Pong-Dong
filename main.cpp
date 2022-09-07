@@ -1,7 +1,7 @@
 #include <raylib.h>
 #include <iostream>
 
-typedef enum GameScreen { LOGO = 0, DEAD, GAMEPLAY } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, DEAD, GAMEPLAY } GameScreen;
 
 const float SPEED = 5.0;
 const float BALLSPEED = 4.0;
@@ -169,6 +169,33 @@ void init() {
 
 }
 
+void reset() {
+    ClearBackground(BLACK);
+    score = 0;
+    framesCounter = 0;
+    dead = false;
+
+    currentScreen = GAMEPLAY;
+
+    
+
+    Player2 = { 6.0 , (float)SCREENHEIGHT / 2 };
+    Player = { (float)SCREENWIDTH - PLAYERWIDTH - 6.0, (float)SCREENHEIGHT / 2 };
+
+    Ball = { (float)SCREENWIDTH / 2, (float)SCREENHEIGHT / 2 };
+
+    float BallX = GetRandomValue(-1, 1);
+    float BallY = GetRandomValue(-1, 1);
+
+    if (BallX == 0) { BallX = -1; }
+    if (BallY == 0) { BallY = 1; }
+
+
+    BallVec = { BallX , BallY };
+    ClearBackground(BLACK);
+
+}
+
 int main(void)
 {
     init();
@@ -176,8 +203,11 @@ int main(void)
     // Main game loop
     while (!WindowShouldClose())
     {
+
+
+
         // Update
-        if (framesCounter > 50) { currentScreen = GAMEPLAY; }
+        if (framesCounter == 50) { currentScreen = TITLE; framesCounter++; }
 
         BeginDrawing();
 
@@ -189,6 +219,7 @@ int main(void)
             break;
 
         case GAMEPLAY:
+            ClearBackground(BLACK);
             UpdateEdges();
             CollisionPlayerWindow();
             PlayerMovement();
@@ -197,9 +228,27 @@ int main(void)
             break;
 
         case DEAD:
+            ClearBackground(BLACK);
             DrawText("u lost", SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2, 30, WHITE);
+            DrawText(TextFormat("your score was: %08i", score), SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2 - 40, 30, WHITE);
+            ClearBackground(BLACK);
+            DrawText("press Space to start the game", SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2 + 30, 30, WHITE);
+            if (IsKeyDown(KEY_SPACE)) {
+                ClearBackground(BLACK);
+
+                reset();
+            }
+            break;
+
+        case TITLE:
+            // std::cout << "title" << std::endl;
+            ClearBackground(BLACK);
+            DrawText("press Space to start the game", SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2, 30, WHITE);
+            ClearBackground(BLACK);
+            if (IsKeyDown(KEY_SPACE)) { currentScreen = GAMEPLAY; }
             break;
         }
+        // std::cout << framesCounter << std::endl;
 
         EndDrawing();
 
