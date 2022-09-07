@@ -18,5 +18,7 @@ make
 
 for windows compile it with visual studio and manually add the ressource directory in the same folder as the executable
 
+or use the precompiled version in the release tab
+
 or just use linux
 
