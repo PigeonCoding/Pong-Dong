@@ -16,9 +16,4 @@ make
 
 ### Windows
 
-for windows compile it with visual studio and manually add the ressource directory in the same folder as the executable
-
-or use the precompiled version in the release tab
-
-or just use linux
-
+go to [Pong-Dong VS2020](https://github.com/magmagaming001/Pong-Dong-VS2020)
