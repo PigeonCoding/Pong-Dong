@@ -93,6 +93,7 @@ void BallCollision() {
     if (Ball.x - Player2.x > 5 && Ball.x - BALLRADIUS < player2edges[1] + 4)
     {
         if (Ball.y > player2edges[2] && Ball.y < player2edges[3]) {
+            Ball.x += BALLRADIUS + 5;
             BallVec.x = -BallVec.x * 1.03;
             PlaySound(fxWav);
             score++;
@@ -102,8 +103,9 @@ void BallCollision() {
     {
         if (Ball.y > player1edges[2] && Ball.y < player1edges[3])
         {
-            PlaySound(fxWav);
+            Ball.x -= BALLRADIUS + 5;
             BallVec.x = -BallVec.x;
+            PlaySound(fxWav);
             score++;
         }
     }
