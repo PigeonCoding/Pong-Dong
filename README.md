@@ -3,7 +3,7 @@
 shitty pong clone made with C++ and raylib
 
 ## how to run
-### Linux/macOS
+### Linux/Mac OS
 -- install cmake g++/gcc
 create a build file in the directory
 
