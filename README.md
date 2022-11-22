@@ -7,14 +7,16 @@ shitty pong clone made with C++ and raylib
 -- install g++
 ```
 mkdir build
+mkdir build/linux 
 make linux
 ./build/linux/build.out
 ```
 
 ### Windows
+-- Install mingw32
 ```
 mkdir build
-make windows
+mingw32-make windows
 .\build\windows\build.exe
 ```
 
