@@ -205,10 +205,6 @@ int main(void)
     // Main game loop
     while (!WindowShouldClose())
     {
-
-
-
-        // Update
         if (framesCounter == 50) { currentScreen = TITLE; framesCounter++; }
 
         BeginDrawing();
@@ -219,7 +215,6 @@ int main(void)
             DrawText("made by pigeon", SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2, 30, WHITE);
             framesCounter++;
             break;
-
         case GAMEPLAY:
             ClearBackground(BLACK);
             UpdateEdges();
@@ -228,7 +223,6 @@ int main(void)
             updateBallPos();
             Draw();
             break;
-
         case DEAD:
             ClearBackground(BLACK);
             DrawText("u lost", SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2, 30, WHITE);
@@ -241,16 +235,13 @@ int main(void)
                 reset();
             }
             break;
-
         case TITLE:
-            // std::cout << "title" << std::endl;
             ClearBackground(BLACK);
             DrawText("press Space to start the game", SCREENWIDTH / 2 - 30, SCREENHEIGHT / 2, 30, WHITE);
             ClearBackground(BLACK);
             if (IsKeyDown(KEY_SPACE)) { currentScreen = GAMEPLAY; }
             break;
         }
-        // std::cout << framesCounter << std::endl;
 
         EndDrawing();
 
