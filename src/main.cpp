@@ -156,7 +156,7 @@ void init() {
     fxWav = LoadSound("ressources/hit.wav");
 
     Player2 = { 6.0 , (float)SCREENHEIGHT / 2 };
-    Player = { (float)SCREENWIDTH - PLAYERWIDTH - 6.0, (float)SCREENHEIGHT / 2 };
+    Player = { (float)(SCREENWIDTH - PLAYERWIDTH - 6.0), (float)SCREENHEIGHT / 2 };
 
     Ball = { (float)SCREENWIDTH / 2, (float)SCREENHEIGHT / 2 };
 
@@ -182,7 +182,7 @@ void reset() {
     
 
     Player2 = { 6.0 , (float)SCREENHEIGHT / 2 };
-    Player = { (float)SCREENWIDTH - PLAYERWIDTH - 6.0, (float)SCREENHEIGHT / 2 };
+    Player = { (float)(SCREENWIDTH - PLAYERWIDTH - 6.0), (float)SCREENHEIGHT / 2 };
 
     Ball = { (float)SCREENWIDTH / 2, (float)SCREENHEIGHT / 2 };
 
